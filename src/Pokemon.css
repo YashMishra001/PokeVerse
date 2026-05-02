@@ -8,6 +8,7 @@
 body {
   background: radial-gradient(circle at top, #0f172a, #020617);
   color: white;
+  line-height: 1.5;
 }
 
 .container {
@@ -57,13 +58,19 @@ body {
   list-style: none;
 }
 
+/* CARD FIXED */
 .card {
-  background: rgba(255, 255, 255, 0.05);
+  background: linear-gradient(
+    145deg,
+    rgba(30, 194, 235, 0.35),
+    rgba(30, 58, 138, 0.4)
+  );
   border-radius: 22px;
   backdrop-filter: blur(14px);
   overflow: hidden;
   transition: 0.4s;
   position: relative;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
 }
 
 .card::before {
@@ -85,7 +92,7 @@ body {
 }
 
 .card:hover {
-  transform: translateY(-12px) scale(1.03);
+  transform: translateY(-10px) scale(1.03);
 }
 
 .cardTop {
@@ -98,7 +105,7 @@ body {
   width: 110px;
   height: 110px;
   object-fit: contain;
-  filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.5));
+  filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.6));
 }
 
 .cardBody {
@@ -109,6 +116,8 @@ body {
 .cardBody h2 {
   text-transform: capitalize;
   margin-bottom: 10px;
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.15);
 }
 
 .types {
@@ -133,20 +142,21 @@ body {
 }
 
 .stats div {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.25); /* FIXED contrast */
   padding: 8px;
   border-radius: 12px;
 }
 
 .label {
   font-size: 11px;
-  opacity: 0.6;
+  opacity: 0.7;
   letter-spacing: 0.5px;
 }
 
 .stats span {
   font-weight: 600;
   font-size: 14px;
+  color: white;
 }
 
 .loading {
@@ -155,6 +165,7 @@ body {
   font-size: 24px;
 }
 
+/* MODAL FIXED (removed duplicate + improved look) */
 .modalOverlay {
   position: fixed;
   top: 0;
@@ -170,14 +181,15 @@ body {
 }
 
 .modalCard {
-  background: #0f172a;
+  background: linear-gradient(145deg, #0f172a, #020617);
   padding: 25px;
-  border-radius: 20px;
+  border-radius: 24px;
   width: 90%;
   max-width: 420px;
   text-align: center;
   position: relative;
   animation: scaleUp 0.3s ease;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
 }
 
 @keyframes scaleUp {
@@ -191,13 +203,15 @@ body {
   }
 }
 
-.modalCard img {
-  width: 140px;
+.modalTop img {
+  width: 130px;
   margin-bottom: 10px;
+  filter: drop-shadow(0 10px 20px rgba(0,0,0,0.6));
 }
 
-.modalCard h2 {
+.modalTop h2 {
   text-transform: capitalize;
+  margin-bottom: 8px;
 }
 
 .closeBtn {
@@ -209,79 +223,6 @@ body {
   font-size: 18px;
   color: white;
   cursor: pointer;
-}
-
-.modalStats {
-  margin: 10px 0;
-  font-size: 14px;
-  text-align: left;
-}
-
-.allStats div {
-  margin: 6px 0;
-}
-
-.allStats span {
-  display: block;
-  font-size: 12px;
-  text-transform: capitalize;
-}
-
-progress {
-  width: 100%;
-  height: 6px;
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-.loadMoreWrapper {
-  display: flex;
-  justify-content: center;
-  margin: 30px 0;
-}
-
-.loadMoreBtn {
-  padding: 12px 25px;
-  border-radius: 30px;
-  border: none;
-  background: linear-gradient(135deg, #1ec2eb, #6366f1);
-  color: white;
-  font-size: 14px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.loadMoreBtn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 20px rgba(30, 194, 235, 0.7);
-}
-
-.loadMoreBtn:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-
-.modalCard {
-  background: linear-gradient(145deg, #0f172a, #020617);
-  padding: 25px;
-  border-radius: 24px;
-  width: 90%;
-  max-width: 420px;
-  text-align: center;
-  position: relative;
-  animation: scaleUp 0.3s ease;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
-}
-
-.modalTop img {
-  width: 130px;
-  margin-bottom: 10px;
-  filter: drop-shadow(0 10px 20px rgba(0,0,0,0.6));
-}
-
-.modalTop h2 {
-  text-transform: capitalize;
-  margin-bottom: 8px;
 }
 
 .modalInfo {
@@ -340,6 +281,33 @@ progress {
   background: linear-gradient(90deg, #1ec2eb, #6366f1);
   border-radius: 10px;
   transition: width 0.4s ease;
+}
+
+.loadMoreWrapper {
+  display: flex;
+  justify-content: center;
+  margin: 30px 0;
+}
+
+.loadMoreBtn {
+  padding: 12px 25px;
+  border-radius: 30px;
+  border: none;
+  background: linear-gradient(135deg, #1ec2eb, #6366f1);
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.loadMoreBtn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(30, 194, 235, 0.7);
+}
+
+.loadMoreBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 @media (max-width: 500px) {
